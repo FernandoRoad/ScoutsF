@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -109,6 +110,77 @@
         </p:panelGrid>
     </p:dialog>
 </h:form>
+    <div class="ui-g">
+            <div class="ui-g-12 ui-md-2">M</div>
+            <div class="ui-g-12 ui-md-10">
+                <div class="ui-g-12">
+                    Bar
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet, orci nec dictum convallis, ligula mauris vestibulum turpis, nec varius tortor quam at diam. Nullam a viverra nibh. In tincidunt tempor lectus quis vulputate. Pellentesque nec dui aliquam, lobortis est in, lobortis ante</div>
+                        <div class="ui-g-12 ui-md-4">Maecenas vel nisi aliquet, vulputate tortor id, laoreet massa. Maecenas mattis tristique bibendum. Suspendisse vel mi dictum, vestibulum lacus quis, pulvinar quam. Proin vulputate, nibh at finibus varius, leo eros lacinia elit, nec blandit odio tellus a justo. Donec nec ex auctor, tristique nulla nec, rutrum sapien.</div>
+                        <div class="ui-g-12 ui-md-4">Proin efficitur in leo eget ornare. Nam vestibulum neque sed velit sagittis sodales. Sed scelerisque hendrerit magna a hendrerit. Cras tempor sem at justo pharetra convallis. Curabitur vel sodales purus. Vestibulum interdum facilisis nulla imperdiet suscipit. Quisque lectus felis, condimentum eget hendrerit sit amet.</div>
+                    </div>
+
+                    <div class="ui-g">
+                        <div class="ui-g-6 ui-md-3"><p:graphicImage url="https://upload.wikimedia.org/wikipedia/commons/b/b7/Atomic_cloud_over_Hiroshima.jpg" style="width:100%"/></div>  
+                        <div class="ui-g-6 ui-md-3"><p:graphicImage url="https://upload.wikimedia.org/wikipedia/commons/b/b7/Atomic_cloud_over_Hiroshima.jpg" style="width:100%"/></div> 
+                        <div class="ui-g-6 ui-md-3"><p:graphicImage url="https://upload.wikimedia.org/wikipedia/commons/b/b7/Atomic_cloud_over_Hiroshima.jpg" style="width:100%"/></div>    
+                        <div class="ui-g-6 ui-md-3"><p:graphicImage url="https://upload.wikimedia.org/wikipedia/commons/b/b7/Atomic_cloud_over_Hiroshima.jpg" style="width:100%"/></div>      
+                    </div>
+
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6">Phasellus faucibus purus volutpat mauris lacinia sodales. Ut sit amet sapien facilisis, commodo dui non, fringilla tellus. Quisque tempus facilisis nisi sodales finibus. Pellentesque neque orci, ullamcorper vitae ligula quis, dignissim euismod augue.</div>
+                        <div class="ui-g-12 ui-md-6">Fusce ullamcorper congue massa, eget ullamcorper nunc lobortis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultrices dui eget dolor feugiat dapibus. Aliquam pretium leo et egestas luctus. Nunc facilisis gravida tellus.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                Footer
+            </div>
+        </div>
+        <h:form id="menu"> <!-- Redirecciona el form a la variable 'menu' -->
+            <p:growl id="messages" />
+                <p:menubar>
+                    <p:menuitem value="Inicio" action="main.inicio()" icon="ui-icon-home"></p:menuitem>
+                    <p:menuitem value="Salir" action="#" icon="ui-icon-close"></p:menuitem>
+                </p:menubar>
+            <c:choose>
+                <c:when test="#{empty sesion.usuario}"> 
+                    <h:form id="alta">
+                        <div class="ui-g">
+                            <div class="ui-g-4"></div>
+                            <div class="ui-g-4">
+                                Nombre <p:inputText id="nombre"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-4"></div>
+                            <div class="ui-g-4">
+                                Apellidos <p:inputText id="apellidos"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-4"></div>
+                            <div class="ui-g-4 center_content">
+                                <h:button value="Enviar" onclick="sesion.login()" />
+                            </div>
+                        </div>
+                    </h:form>
+                </c:when>
+                <c:otherwise>
+                    <div class="ui-g">
+                        <div class="ui-g-4"></div>
+                        <div class="ui-g-4">
+                            <h4>Cierra tu sesión para registrar un nuevo usuario</h4>
+                            <br />
+                            <h:button value="Salir" onclick="sesion.logout()" />
+                        </div>
+                    </div> 
+                </c:otherwise> 
+            </c:choose>
+        </h:form>
     </h:body>
 </html>
 
