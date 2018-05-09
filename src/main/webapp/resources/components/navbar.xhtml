@@ -17,12 +17,24 @@
         
         <!-- Component implementation -->
         <cpst:implementation>
-            <div class="nav-wrapper">
+            <div class="purple lighten-5 nav-wrapper">
                 <!--Panel de menu extensible-->
+                
                 <components:sidepanel />
             
                 <div class="right">
-                    hello
+                    
+                    <h:form id = "loginn">
+
+                        <p:menuButton value="Entrar">
+                            <p:menuitem> Nombre <input type="nombre" size="20" name="nombre"/></p:menuitem>
+                            <p:menuitem> Contraseña <input type="password" size="20" name="password"/></p:menuitem>
+                            <p:menuitem value="Entrar" actionListener="#{menuView.entrar}"/>
+                            <p:menuitem value="Registrarse" url="PAGINA REGISTRO"/>
+                            
+                        </p:menuButton>
+                    </h:form>
+                    
                 </div>
                 
                 <!--Boton de Alberto-->
