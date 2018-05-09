@@ -1,36 +1,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <!-- Import Google Icon Font -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-        <!-- Import Materialize.css -->
-        <link href="./resources/css/materialize.css" rel="stylesheet" type="text/css" media="screen,projection"/>
-        <!-- Import custom css -->
-        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
-        <!-- Let browser know website is optimized for mobile -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
-        <title> <ui:insert name="title">Lil' Scouts</ui:insert> </title>
-    </h:head>
-
+      xmlns:cpst="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
     <h:body>
         
-        <div id="pc" class="ui-g-nopad">
-            <div id="menuside" class="ui-g-2 ui-md-2">
+         <!-- Configurable parameters -->
+        <cpst:interface>
+<!--            <cpst:attribute name="title" />
+            <cpst:attribute name="descr" />
+            <cpst:attribute name="pene" />-->
+        </cpst:interface>
+         
+         
+        <!-- Component implementation -->
+        <cpst:implementation>
+            <!-- Boton toggleable -->
+            <h:form id="sidepanel">
+                <p:link onclick="sidepanel.show()"><i class="material-icons">dehaze</i></p:link>
+<!--                <p:commandButton value="icon" ajax="false" onclick="sidepanel.show()"></p:commandButton>-->
+            </h:form>
+            
+            <!-- Panel toggleable estrecho -->
+            <p:panel id="menuside" toggleable="true" visible="false" closable="true" widgetVar="sidepanel" class="ui-g-2 ui-md-2">
                 <p:accordionPanel class="collection">
+                    <!-- Panel 1 -->
                     <p:tab title="Inicio" id="submenu-inicio" class="collection-item">
                         <h:panelGrid columns="1" cellpadding="5">
                             <h:link value="Pagina de inicio" onclick="#{inicio.home()}" />
                             <h:link value="Contacto" onclick="#{inicio.contacto()}" />
                         </h:panelGrid>
                     </p:tab>
+                    
                     <p:tab title="Usuario" id="submenu-usuario" class="collection-item">
                         <c:choose>
                             <c:when test="#{!empty sesion.usuario}">
@@ -46,12 +48,10 @@
                             </c:otherwise>
                         </c:choose>
                     </p:tab>
+                    
                 </p:accordionPanel>
-            </div>
-            <div id="contentside" class="container ui-g-10 ui-md-10 ui-sm-12"> <ui:insert name="content">Content</ui:insert> </div>
-        </div>
-        
-        <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src=".resources/js/materialize.min.js" />
+            </p:panel>
+            
+        </cpst:implementation>
     </h:body>
 </html>
