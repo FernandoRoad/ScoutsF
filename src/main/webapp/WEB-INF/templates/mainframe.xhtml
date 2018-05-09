@@ -41,8 +41,24 @@
                 </ui:insert>
             </div>
             <!--Contenido-->
-            <div id="content" class="ui-g-12">
-                <ui:insert name="content">Content</ui:insert>
+            <div class="ui-g">
+                <c:choose>
+                    <c:when test="#{!empty Usuario.algoquevayaqui}">
+                    <!--Cuando no hay usuario logeado, la barra lateral no esta-->
+                        <div id="content" class="ui-g-12">
+                            <ui:insert name="content">Content</ui:insert>
+                        </div>                
+                    </c:when>
+                    <c:otherwise>
+                    <!--Cuando el user ha iniciado sesion, aparece la barra-->
+                        <div class="ui-g-3">
+                            <components:sidepanel />
+                        </div>
+                        <div id="content" class="ui-g-9">
+                            <ui:insert name="content">Content</ui:insert>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
         

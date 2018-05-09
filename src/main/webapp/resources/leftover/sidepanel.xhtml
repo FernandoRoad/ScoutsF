@@ -16,18 +16,20 @@
          
         <!-- Component implementation -->
         <cpst:implementation>
-            <!-- Panel estrecho -->
-            <p:panel id="sidepanel" class="ui-md-3 ui-sm-12">
-                
-                
+            <!-- Boton toggleable -->
+            <h:form id="sidepanel_button">
+                <p:commandButton id="toggler" type="button" icon="fa-bars" />
+                <!--<p:link onclick="sidepanel.show()"><i class="brand-logo material-icons">dehaze</i></p:link>-->
+            </h:form>
+            
+            <!-- Panel toggleable estrecho -->
+            <p:panel widgetVar="sidepanel" id="sidepanel" toggleable="true" visible="true" closable="false" class="ui-md-3 ui-sm-12">
                 <p:accordionPanel class="collection">
                      <!--Panel 1-->
                     <p:tab title="Inicio" id="submenu-inicio" class="collection-item">
                         <h:panelGrid columns="1" cellpadding="5">
-                            <h:link value="Pagina de inicio" />
-                            <!--onclick="#{inicio.home()}"-->
-                            <h:link value="Contacto" />
-                            <!--onclick="#{inicio.contacto()}"-->
+                            <h:link value="Pagina de inicio" onclick="#{inicio.home()}" />
+                            <h:link value="Contacto" onclick="#{inicio.contacto()}" />
                         </h:panelGrid>
                     </p:tab>
                     
