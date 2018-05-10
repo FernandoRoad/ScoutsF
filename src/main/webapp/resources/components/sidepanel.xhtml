@@ -18,36 +18,28 @@
         <cpst:implementation>
             <!-- Panel estrecho -->
             <p:panel id="sidepanel" class="ui-md-3 ui-sm-12">
-                
-                
-                <p:accordionPanel class="collection">
-                     <!--Panel 1-->
-                    <p:tab title="Inicio" id="submenu-inicio" class="collection-item">
-                        <h:panelGrid columns="1" cellpadding="5">
-                            <h:link value="Pagina de inicio" />
-                            <!--onclick="#{inicio.home()}"-->
-                            <h:link value="Contacto" />
-                            <!--onclick="#{inicio.contacto()}"-->
-                        </h:panelGrid>
-                    </p:tab>
+                <!-- Distintos casos de uso -->
+                <c:choose>
+                    <!--Cuando no hay usuario logeado-->
+                    <c:when test="#{empty Usuario.cuenta}">
                     
-                    <p:tab title="Usuario" id="submenu-usuario" class="collection-item">
-                        <c:choose>
-                            <c:when test="#{!empty sesion.usuario}">
-                            
-                            </c:when>
-                            <c:otherwise>
-                                Usuario <p:inputText label="usuario" />
-                                <br /> 
-                                Contraseña <p:inputText label="passwd" />
-                                <p:button value="Inicia sesión" onclick="#{sesion.login()}" />
-                                <p:button value="¿Aun no tienes cuenta?" onclick="#{sesion.alta()}" />
-                                <p:button value="Recordar mi contraseña" onclick="#{sesion.recordar()}" />
-                            </c:otherwise>
-                        </c:choose>
-                    </p:tab>
+                    </c:when>
+                    <!--Si el usuario es EDUCANDO-->
+                    <c:when test="#{Usuario.Rol == 'EDUCANDO'}">
                     
-                </p:accordionPanel>
+                    </c:when>
+                    <!--Si el usuario es SCOUTER-->
+                    <c:when test="#{Usuario.Rol == 'SCOUTER'}">
+                    
+                    </c:when>
+                    <!--Si el usuario es ADMIN-->
+                    <c:when test="#{Usuario.ROl == 'ADMIN'}">
+                        
+                        <h:graphicImage class="ui ui-icon-stats"
+                        <p:commandLink value="Stats" onclick="sidepanel.openSubMenu(stats)" />
+                    
+                    </c:when>
+                </c:choose>
             </p:panel>
             
         </cpst:implementation>

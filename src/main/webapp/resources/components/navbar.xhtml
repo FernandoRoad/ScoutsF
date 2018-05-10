@@ -18,12 +18,14 @@
         <!-- Component implementation -->
         <cpst:implementation>
             <div class="purple lighten-5 nav-wrapper">
-                <!--Panel de menu extensible-->
                 
-                <components:sidepanel />
-            
+                <!--Texto de bienvenida (solo si usuario inicia sesion)-->
+                <c:if test="#{!empty Usuario.cuenta}">
+                    <h:outputText>Bienvenido #{Usuario.usuario}</h:outputText>
+                </c:if>
+                
+                <!--Boton de Alberto-->    
                 <div class="right">
-                    
                     <h:form id = "loginn">
 
                         <p:menuButton value="Entrar">
@@ -31,61 +33,10 @@
                             <p:menuitem> Contraseña <input type="password" size="20" name="password"/></p:menuitem>
                             <p:menuitem value="Entrar" actionListener="#{menuView.entrar}"/>
                             <p:menuitem value="Registrarse" url="PAGINA REGISTRO"/>
-                            
                         </p:menuButton>
+                        
                     </h:form>
-                    
                 </div>
-                
-            <div class="nav-wrapper">
-                <!--Panel de menu extensible (DEPRECATED) -->
-                <!--<components:sidepanel />-->
-                            
-                <!--Boton de Alberto-->
-                <f:facet name="userLogin" class="right">
-                    <h:form>
-                        <p:growl id="messages" showDetail="true"/>
-
-                        <p:slideMenu>
-                            <p:submenu label="Ajax Menuitems" icon="ui-icon-refresh">
-                                <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk" />
-                                <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
-                            </p:submenu>
-                            <p:submenu label="Non-Ajax Menuitem" icon="ui-icon-newwin">
-                                <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
-                            </p:submenu>
-                            <p:separator />
-                            <p:submenu label="Navigations" icon="ui-icon-extlink">
-                                <p:submenu label="Prime Links">
-                                    <p:menuitem value="Prime" url="http://www.prime.com.tr" />
-                                    <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
-                                </p:submenu>
-                                <p:menuitem value="Mobile" />
-                            </p:submenu>
-                        </p:slideMenu>
-
-                        <p:separator />
-
-                        <p:commandButton id="dynaButton" value="Show" type="button" icon="ui-icon-extlink"/>
-                        <p:slideMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom" style="width:180px">
-                            <p:submenu label="Ajax Menuitems">
-                                <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk"/>
-                                <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
-                            </p:submenu>
-                            <p:submenu label="Non-Ajax Menuitem">
-                                <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
-                            </p:submenu>
-                            <p:submenu label="Navigations" icon="ui-icon-extlink">
-                                <p:submenu label="Prime Links">
-                                    <p:menuitem value="Prime" url="http://www.prime.com.tr" />
-                                    <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
-                                </p:submenu>
-                                <p:menuitem value="Mobile" />
-                            </p:submenu>
-                        </p:slideMenu>
-                    </h:form>
-                </f:facet>
-            </div>
         </cpst:implementation>
 
     </h:body>
