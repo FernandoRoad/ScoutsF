@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:cpst="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:components="http://xmlns.jcp.org/jsf/composite/components"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        
+        <!-- Configurable parameters -->
+        <cpst:interface>
+            <cpst:attribute name="title" />
+            <cpst:attribute name="descr" />
+            <cpst:attribute name="pene" />
+        </cpst:interface>
+        
+        <!-- Component implementation -->
+        <cpst:implementation>
+            <div class="purple lighten-5 nav-wrapper">
+                <!--Panel de menu extensible-->
+            
+                <div class="right">
+                    
+                    <h:form id = "loginn">
+
+                        <p:menuButton value="Entrar">
+                            <p:menuitem> Nombre <input type="nombre" size="20" name="nombre"/></p:menuitem>
+                            <p:menuitem> Contraseña <input type="password" size="20" name="password"/></p:menuitem>
+                            <p:menuitem value="Entrar" actionListener="#{menuView.entrar}"/>
+                            <p:menuitem value="Registrarse" url="PAGINA REGISTRO"/>
+                            
+                        </p:menuButton>
+                    </h:form>
+                    
+                </div>
+                
+            <div class="nav-wrapper">
+                <!--Panel de menu extensible (DEPRECATED) -->
+                <!--<components:sidepanel />-->
+                            
+                <!--Boton de Alberto-->
+                <f:facet name="userLogin" class="right">
+                    <h:form>
+                        <p:growl id="messages" showDetail="true"/>
+
+                        <p:slideMenu>
+                            <p:submenu label="Ajax Menuitems" icon="ui-icon-refresh">
+                                <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk" />
+                                <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
+                            </p:submenu>
+                            <p:submenu label="Non-Ajax Menuitem" icon="ui-icon-newwin">
+                                <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                            </p:submenu>
+                            <p:separator />
+                            <p:submenu label="Navigations" icon="ui-icon-extlink">
+                                <p:submenu label="Prime Links">
+                                    <p:menuitem value="Prime" url="http://www.prime.com.tr" />
+                                    <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+                                </p:submenu>
+                                <p:menuitem value="Mobile" />
+                            </p:submenu>
+                        </p:slideMenu>
+
+                        <p:separator />
+
+                        <p:commandButton id="dynaButton" value="Show" type="button" icon="ui-icon-extlink"/>
+                        <p:slideMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom" style="width:180px">
+                            <p:submenu label="Ajax Menuitems">
+                                <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk"/>
+                                <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                            <p:submenu label="Non-Ajax Menuitem">
+                                <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                            </p:submenu>
+                            <p:submenu label="Navigations" icon="ui-icon-extlink">
+                                <p:submenu label="Prime Links">
+                                    <p:menuitem value="Prime" url="http://www.prime.com.tr" />
+                                    <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+                                </p:submenu>
+                                <p:menuitem value="Mobile" />
+                            </p:submenu>
+                        </p:slideMenu>
+                    </h:form>
+                </f:facet>
+            </div>
+        </cpst:implementation>
+
+    </h:body>
+</html>

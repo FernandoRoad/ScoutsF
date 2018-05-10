@@ -1,14 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template="/WEB-INF/templates/sidepanel.xhtml"
+<ui:composition template="/WEB-INF/templates/mainframe.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:comp="http://xmlns.jcp.org/jsf/composite/components">
+    
     
     <ui:define name="title">Alta de usuario</ui:define>
+    
     <ui:define name="content" class="center-align">
+        <!--Se usa para centrar el formulario-->
         <div class="ui-g-4"></div>
         <div class="ui-g-4">
             <c:choose>
@@ -17,24 +21,21 @@
                         <!-- Row 1 -->
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                Nombre <p:inputText id="nombre" />
+                                <p:inputText id="nombre" type="text" class="validate" placeholder="José" />
+                                <label for="nombre">Nombre</label>
                             </div>
                         </div>
                         <!-- Row 2 -->
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                Apellidos <p:inputText id="apellidos" />
+                                <p:inputText id="apellidos" type="text" class="validate" placeholder="Perez Perez"/>
+                                <label for="apellidos">Apellidos</label>
                             </div>
                         </div>
                         <!-- Row ...n -->
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                Nombre de usuario <p:inputText id="usuario" />
-                            </div>
-                        </div>
-                        <!-- Row ...n -->
-                        <div class="ui-g">
-                            <div class="ui-g-12">
+                                <!--Texto label en Primefaces (outputLabel)-->
                                 <p:outputLabel for="passwd" value="Contraseña" />
                                 <p:inputText id="passwd" />
                             </div>
@@ -49,13 +50,15 @@
                         <!-- Row ...n -->
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                Email <p:inputText id="email" />
+                                <p:inputText id="email" type="email" class="validate" />
+                                <label for="email">Email</label>
                             </div>
                         </div>
                         <!-- Row ...n -->
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                Teléfono <p:inputText id="tlf" />
+                                <p:inputText id="tlf" type="text" class="validate" />
+                                <label for="tlf">Teléfono</label>
                             </div>
                         </div>
                         <div class="ui-g">
@@ -78,5 +81,6 @@
             </c:choose>
             </div>
     </ui:define>
+    
 </ui:composition>
 
